@@ -1,5 +1,5 @@
 # navigation-control
-Udacity Deep Reinforcement Learning Nanodegree Program - Project Submission About Navigation Control
+Udacity Deep Reinforcement Learning Nanodegree Program - Navigation Control
 
 Observations:
 
