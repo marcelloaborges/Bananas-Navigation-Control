@@ -44,6 +44,6 @@ The hypeparameters:
 
   - The file with the hypeparameters configuration is the <b>agent.py</b>. 
   - If you want you can change the model configuration to into the <b>model.py</b> file.
-  - The actual configuration if the hypeparameters is: ALPHA = 1, GAMMA = 0.99, TAU = 0.001, UPDATE_EVERY = 5, BUFFER_SIZE = 10000, 
+  - The actual configuration of the hypeparameters is: ALPHA = 1, GAMMA = 0.99, TAU = 0.001, UPDATE_EVERY = 5, BUFFER_SIZE = 10000, 
     BATCH_SIZE = 300   
   - For the model there is just one hidden layer with input size and output size corresponding to the environment settings.
