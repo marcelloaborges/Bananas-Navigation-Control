@@ -5,7 +5,7 @@ from collections import deque
 import torch
 import os
 
-env = UnityEnvironment(file_name="Banana_Windows_x86_64/Banana.exe", no_graphics=False)
+env = UnityEnvironment(file_name="Banana_Windows_x86_64/Banana.exe", no_graphics=True)
 
 
 # get the default brain
@@ -33,7 +33,6 @@ if os.path.isfile('checkpoint.pth'):
     agent.target_model.load_state_dict(torch.load('checkpoint.pth'))
 
 scores_window = deque(maxlen=100)
-one_hundred_games = 0
 for i in range(0, 2000):
     env_info = env.reset(train_mode=False)[brain_name] # reset the environment
     state = env_info.vector_observations[0]            # get the current state
@@ -57,16 +56,11 @@ for i in range(0, 2000):
     scores_window.append(score)
     avarage_score = np.mean(scores_window)
     if avarage_score >= 13 and len(scores_window) == 100:        
-        print("Solved! Episode: ", i, " => Avarage Score: ", "{:10.2f}".format(avarage_score), "|Score: ", "{:10.2f}".format(score), "|Goal: ", one_hundred_games)
+        print("Solved! Episode: ", i, " => Avarage Score: ", "{:10.2f}".format(avarage_score), "|Score: ", "{:10.2f}".format(score))
         torch.save(agent.model.state_dict(), 'checkpoint.pth')      
         break
     
-    if score < 13:
-        one_hundred_games = 0    
-    else:
-        one_hundred_games += 1
-    
-    print("Episode: ", i, " => Avarage Score: ", "{:10.2f}".format(avarage_score), "|Score: ", "{:10.2f}".format(score), "|Goal: ", one_hundred_games)
+    print("Episode: ", i, " => Avarage Score: ", "{:10.2f}".format(avarage_score), "|Score: ", "{:10.2f}".format(score))
     torch.save(agent.model.state_dict(), 'checkpoint.pth')        
 
 env.close()
