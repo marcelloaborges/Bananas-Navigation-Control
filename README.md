@@ -7,6 +7,22 @@ Observations:
 - If you are not using the an windows environment, you will need to download the corresponding <b>"Banana"</b> version for you OS system. Mail me
   if you need more details about the environment .exe file.
 - The checkpoint.pth has the expected average score already hit.
+
+Requeriments:
+
+  - tensorflow==1.7.1
+  - Pillow>=4.2.1
+  - matplotlib
+  - numpy>=1.11.0
+  - pytest>=3.2.2
+  - docopt
+  - pyyaml
+  - protobuf==3.5.2
+  - grpcio==1.11.0
+  - torch==0.4.1
+  - pandas
+  - scipy
+  - ipykernel
   
 The problem:
 
