@@ -33,7 +33,7 @@ The problem:
 
 The solution:
 
-- For this problem I am using an Double Deep Q-Learning with Memory Replay aproach.
+- For this problem I am using an Double Deep Q-Learning with Experience Replay approach.
 - I have checked this approach along with prioritized experience replay but the results were almost the same whereas the performance
   decreased with the prioritized experience replay implementation due to the fact that the algorithm must be updating the error 
   value for all the memory buffer after each backward step. You can try it if you want but just changing the configurations of the 
