@@ -28,7 +28,7 @@ The problem:
 
 - The environment solved here is a problem about navigation control where the agent must be able to navigate into an environment
   collecting yellow bananas while avoiding the blue ones.
-- For each yeallow banana collected it receives a +1 reward while when it collect a blue banana the reward is -1.
+- For each yellow banana collected it receives a +1 reward while when it collect a blue banana the reward is -1.
 - The goal is get an average score of +13 over 100 consecutive episodes.
 
 The solution:
