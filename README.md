@@ -32,19 +32,19 @@ Udacity Deep Reinforcement Learning Nanodegree Program - Navigation Control
 ## The problem:
 - The task solved here refers to a navigation control environment where the agent must be able to drive itself 
   collecting yellow bananas while avoiding the blue ones.
-- For each yellow banana collected it receives a +1 reward while when it collect a blue banana the reward is -1.
+- For each yellow banana collected it receives a +1 reward however, when it collects a blue banana the reward is -1.
 - The agent can perform 4 actions (left, right, forward or backwards).
 - The environment provides information about the state.
-- The goal is get an average score of +13 over 100 consecutive episodes.
+- The goal is to get an average score of +13 over 100 consecutive episodes.
 
 
 ## The solution:
-- For this problem I am using an Double Deep Q-Learning with Experience Replay approach.
-- I have checked this approach along with prioritized experience replay but the results were almost the same whereas the performance decreased with the prioritized experience replay implementation due to the fact that the algorithm must be updating the error and the pick change value for all the memory buffer after each backward step. In the tests I did, just tunning the hyperparameters I got almost the same results.
-- The random factor on this environment can generate initial sceneries that make the agent converges really fast or takes really long. In some tests it could solve the task in less than 200 episodes and on another ones it took almost 400 hundred episodes. The average convergence still occurs around the 200 episode, but in few cases you can face these wierd sceneries.
-- The future goal is to use the Duelling Deep Q-Learning and check how it goes in comparison with the actual solution.
+- For this problem I used a Double Deep Q-Learning with Experience Replay approach.
+- I have checked this approach along with prioritized experience replay but the results were almost the same whereas the performance decreased with the prioritized experience replay implementation due to the fact that the algorithm must have updated the error and the pick change value for all the memory buffer after each backward step. In the tests I did, just tunning the hyperparameters I got almost the same results.
+- The random factor on this environment can generate initial sceneries that make the agent converge really fast or take really long. In some tests it could solve the task in less than 200 episodes and in other ones it took almost 400 hundred episodes. The average convergence still occurs around the 200th episode, but in a few cases you can face these wierd sceneries.
+- The future goal is to use the Duelling Deep Q-Learning and check how it goes in comparison to the actual solution.
 I also want to check the "exploitation vs. exploration" question working with a variable epsilon. For this case
-the epsilon is fixed into 5%. I think the convergence ratio may increase working with a decreasing exploration ratio what I believe would deal better with the sceneries where the agent get stuck.
+the epsilon is fixed to 5%. I think the convergence ratio may increase working with a decreasing exploration ratio, what I believe would deal better with the sceneries where the agent gets stuck.
 
 
 ### The hyperparameters:
