@@ -1,49 +1,64 @@
-# navigation-control
+<img src="https://s3.amazonaws.com/video.udacity-data.com/topher/2018/June/5b1ab4b0_banana/banana.gif">
+
+
+# DRL - Double DQN - Navigation Control
 Udacity Deep Reinforcement Learning Nanodegree Program - Navigation Control
 
-Observations:
 
+### Observations:
 - To run the project just execute the <b>main.py</b> file.
-- If you are not using a windows environment, you will need to download the corresponding <b>"Banana"</b> version for you OS system. Mail me
-  if you need more details about the environment <b>.exe</b> file.
+- There is also an .ipynb file for jupyter notebook execution.
+- If you are not using a windows environment, you will need to download the corresponding <b>"Banana"</b> version for you OS system. Mail me if you need more details about the environment <b>.exe</b> file.
 - The <b>checkpoint.pth</b> has the expected average score already hit.
 
-Requeriments:
 
-  - tensorflow==1.7.1
-  - Pillow>=4.2.1
-  - matplotlib
-  - numpy>=1.11.0
-  - pytest>=3.2.2
-  - docopt
-  - pyyaml
-  - protobuf==3.5.2
-  - grpcio==1.11.0
-  - torch==0.4.1
-  - pandas
-  - scipy
-  - ipykernel
-  
-The problem:
+### Requeriments:
+- tensorflow: 1.7.1
+- Pillow: 4.2.1
+- matplotlib
+- numpy: 1.11.0
+- pytest: 3.2.2
+- docopt
+- pyyaml
+- protobuf: 3.5.2
+- grpcio: 1.11.0
+- torch: 0.4.1
+- pandas
+- scipy
+- ipykernel
+- jupyter: 5.6.0
 
-- The environment solved here is a problem about navigation control where the agent must be able to navigate into an environment
+
+## The problem:
+- The task solved here refers to a navigation control environment where the agent must be able to drive itself 
   collecting yellow bananas while avoiding the blue ones.
 - For each yellow banana collected it receives a +1 reward while when it collect a blue banana the reward is -1.
+- The agent can perform 4 actions (left, right, forward or backwards).
+- The environment provides information about the state.
 - The goal is get an average score of +13 over 100 consecutive episodes.
 
-The solution:
 
+## The solution:
 - For this problem I am using an Double Deep Q-Learning with Experience Replay approach.
-- I have checked this approach along with prioritized experience replay but the results were almost the same whereas the performance
-  decreased with the prioritized experience replay implementation due to the fact that the algorithm must be updating the error 
-  value for all the memory buffer after each backward step. You can try it if you want but just changing the configurations of the 
-  hyperparameters you can get the same results at the same scenery.
+- I have checked this approach along with prioritized experience replay but the results were almost the same whereas the performance decreased with the prioritized experience replay implementation due to the fact that the algorithm must be updating the error and the pick change value for all the memory buffer after each backward step. In the tests I did, just tunning the hyperparameters I got almost the same results.
+- The random factor on this environment can generate initial sceneries that make the agent converges really fast or takes really long. In some tests it could solve the task in less than 200 episodes and on another ones it took almost 400 hundred episodes. The average convergence still occurs around the 200 episode, but in few cases you can face these wierd sceneries.
 - The future goal is to use the Duelling Deep Q-Learning and check how it goes in comparison with the actual solution.
+I also want to check the "exploitation vs. exploration" question working with a variable epsilon. For this case
+the epsilon is fixed into 5%. I think the convergence ratio may increase working with a decreasing exploration ratio what I believe would deal better with the sceneries where the agent get stuck.
 
-The hypeparameters:
 
-  - The file with the hypeparameters configuration is the <b>agent.py</b>. 
-  - If you want you can change the model configuration to into the <b>model.py</b> file.
-  - The actual configuration of the hypeparameters is: ALPHA = 1, GAMMA = 0.99, TAU = 0.001, UPDATE_EVERY = 5, BUFFER_SIZE = 10000, 
-    BATCH_SIZE = 300   
-  - For the model there is just one hidden layer with input size and output size corresponding to the environment settings.
+### The hyperparameters:
+- The file with the hyperparameters configuration is the <b>main.py</b>. 
+- If you want you can change the model configuration into the <b>model.py</b> file.
+- The actual configuration of the hyperparameters is: 
+  - ALPHA: 1
+  - GAMMA: 0.99
+  - TAU: 1e-3
+  - UPDATE_EVERY: 1 
+  - BUFFER_SIZE: 1e5
+  - BATCH_SIZE: 128
+  - Learning Rate: 5e-4
+
+- For the neural model:    
+  - Hidden: (state_size, 64)   - ReLU    
+  - Output: (64, action_size)  - Linear   
